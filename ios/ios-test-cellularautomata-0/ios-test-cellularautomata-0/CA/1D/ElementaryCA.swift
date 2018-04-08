@@ -13,33 +13,21 @@ struct Rules {
     static let Rule90: [UInt8] = [0, 1, 0, 1, 1, 0, 1, 0]
 }
 
-struct ElementaryCA {
+protocol ElementaryCAProtocol {
     
-    // 1D array
-    // States = 0 or 1
-    // Neigbours = index - 1 or index + 1
-    // Gen = state(t) = f(neighbour_states(t-1))
+    var cells: [UInt8] { get set }
+    var listOfCells: [UInt8] { get set }
+    var width: Int { get }
+    var height: Int { get }
+}
+
+extension ElementaryCAProtocol {
     
-    // Rules = 000, 001, 010, 011, 100, 101, 110, 111
-    //          0    1    0    1    1    0    1    0
-    
-    // Initial state: round(length of array / 2)
-    
-    // Fill image with array data
-    
-    var cells: [UInt8] = []
-    var listOfCells: [UInt8] = []
-    var width: Int
-    var height: Int
-    
-    init(width: Int, height: Int) {
+    mutating func setup() {
         
-        self.width = width
-        self.height = height
-        
-        for index in 0..<width {
+        for index in 0..<self.width {
             
-            if index == Int(round(Double(width - 1) * 0.5)) {
+            if index == Int(round(Double(self.width - 1) * 0.5)) {
                 
                 self.cells.append(1)
             }
@@ -49,7 +37,7 @@ struct ElementaryCA {
             }
         }
         
-        let listLength = width * (height - 1)
+        let listLength = self.width * (self.height - 1)
         
         for _ in 0..<listLength {
             
@@ -60,10 +48,9 @@ struct ElementaryCA {
             
             self.listOfCells.append(cell)
         }
-        
     }
     
-    public mutating func updateStates(completion: (_: [UInt8]) -> Void) {
+    mutating func updateStates(completion: (_: [UInt8]) -> Void) {
         
         var newCells: [UInt8] = []
         
@@ -73,7 +60,7 @@ struct ElementaryCA {
             let left: UInt8 = index == 0 ? self.cells[limit] : self.cells[index - 1]
             let right: UInt8 = index == limit ? self.cells[0] : self.cells[index + 1]
             
-            let newCell = getNewState(left: left, center: self.cells[index], right: right, rule: Rules.Rule90)
+            let newCell = self.getNewState(left: left, center: self.cells[index], right: right, rule: Rules.Rule90)
             newCells.append(newCell)
         }
         
@@ -121,5 +108,33 @@ struct ElementaryCA {
         default:
             return center
         }
+    }
+}
+
+struct ElementaryCA: ElementaryCAProtocol {
+    
+    // 1D array
+    // States = 0 or 1
+    // Neigbours = index - 1 or index + 1
+    // Gen = state(t) = f(neighbour_states(t-1))
+    
+    // Rules = 000, 001, 010, 011, 100, 101, 110, 111
+    //          0    1    0    1    1    0    1    0
+    
+    // Initial state: round(length of array / 2)
+    
+    // Fill image with array data
+    
+    var cells: [UInt8] = []
+    var listOfCells: [UInt8] = []
+    var width: Int
+    var height: Int
+    
+    init(width: Int, height: Int) {
+        
+        self.width = width
+        self.height = height
+        
+        self.setup()
     }
 }

@@ -24,7 +24,7 @@ class MainViewController: UIViewController {
     @IBOutlet
     private var toggleButton: UIButton?
     
-    private var elementaryCA: ElementaryCA?
+    private var elementaryCA: ElementaryCAProtocol?
     
     private let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
     private let bitmapInfo: CGBitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedFirst.rawValue)
