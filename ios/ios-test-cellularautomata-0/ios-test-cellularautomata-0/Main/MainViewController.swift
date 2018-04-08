@@ -38,11 +38,11 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         
-//        self.imageWidth = Int(self.imageView?.bounds.width ?? 0)
-//        self.imageHeight = Int(self.imageView?.bounds.height ?? 0)
+        self.imageWidth = Int(self.imageView?.bounds.width ?? 0)
+        self.imageHeight = Int(self.imageView?.bounds.height ?? 0)
 
-        self.imageWidth = 200
-        self.imageHeight = 200
+//        self.imageWidth = 200
+//        self.imageHeight = 200
         
         if let width = self.imageWidth, let height = self.imageHeight {
         

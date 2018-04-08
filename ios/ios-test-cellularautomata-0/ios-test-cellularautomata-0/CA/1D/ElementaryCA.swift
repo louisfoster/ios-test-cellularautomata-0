@@ -66,19 +66,8 @@ extension ElementaryCAProtocol {
         
         self.cells = newCells
         
-        let start = self.listOfCells.count - self.width
-        
-        for index in 0..<self.listOfCells.count {
-            
-            if index < start {
-                
-                self.listOfCells[index] = self.listOfCells[index + self.width]
-            }
-            else {
-                
-                self.listOfCells[index] = self.cells[index % self.width]
-            }
-        }
+        let adjusted = self.listOfCells[self.width...]
+        self.listOfCells = adjusted + self.cells
         
         completion(self.listOfCells)
     }
