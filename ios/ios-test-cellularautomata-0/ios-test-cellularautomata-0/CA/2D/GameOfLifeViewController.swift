@@ -31,7 +31,6 @@ class GameOfLifeViewController: UIViewController {
     private var imageHeight: Int?
     private var imageWidth: Int?
     
-    private var pixels: [PixelData] = [PixelData]()
     private var pixel0 = PixelData(r: 0, g: 0, b: 0)
     private var pixel1 = PixelData(r: 255, g: 255, b: 255)
     
@@ -82,7 +81,6 @@ class GameOfLifeViewController: UIViewController {
                 self.image = imageFromRGB32Bitmap(pixels: pix, width: width, height: height)
                 
                 self.imageView?.image = self.image
-                self.pixels = pix
                 
             }
             
@@ -93,8 +91,6 @@ class GameOfLifeViewController: UIViewController {
             })
         }
     }
-    
-    // MARK: Actions
     
     private func startCA() {
         

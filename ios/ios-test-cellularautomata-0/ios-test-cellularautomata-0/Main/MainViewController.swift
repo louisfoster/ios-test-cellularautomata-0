@@ -21,11 +21,13 @@ class MainViewController: UIViewController {
     
     private var elementaryCAController: UIViewController?
     private var gameOfLifeController: UIViewController?
+    private var gameOfLife3DController: UIViewController?
     
     override func viewDidLoad() {
         
         self.elementaryCAController = ElementaryCAViewController()
         self.gameOfLifeController = GameOfLifeViewController()
+        self.gameOfLife3DController = GameOfLife3DViewController()
     }
     
     @IBAction
@@ -45,4 +47,11 @@ class MainViewController: UIViewController {
         }
     }
     
+    @IBAction func loadGameOfLife3D(_ sender: Any) {
+        
+        if let controller = self.gameOfLife3DController {
+            
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
 }

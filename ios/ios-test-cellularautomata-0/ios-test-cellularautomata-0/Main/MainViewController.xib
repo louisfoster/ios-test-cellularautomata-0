@@ -58,6 +58,9 @@
                     <state key="normal" title="Game of Life 3D">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                     </state>
+                    <connections>
+                        <action selector="loadGameOfLife3D:" destination="-1" eventType="touchUpInside" id="Rkl-3n-gwt"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
