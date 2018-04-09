@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameOfLifeViewController" customModule="ios_test_cellularautomata_0" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView" destination="Ahq-38-3cP" id="2YA-8u-F33"/>
+                <outlet property="resetButton" destination="a2X-3N-2CS" id="5aD-HZ-ON8"/>
+                <outlet property="toggleButton" destination="BVs-ji-7S9" id="cpW-wH-LeM"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2X-3N-2CS">
+                    <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="1xf-Cu-Oxv"/>
+                    </constraints>
+                    <state key="normal" title="Reset">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="resetCA:" destination="-1" eventType="touchUpInside" id="kPh-cc-zXf"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ahq-38-3cP">
+                    <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVs-ji-7S9">
+                    <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal">
+                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="toggleIteration:" destination="-1" eventType="touchUpInside" id="556-8d-AFJ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Pda-XO-s3W" firstAttribute="trailing" secondItem="BVs-ji-7S9" secondAttribute="trailing" id="0LO-Kd-zOr"/>
+                <constraint firstItem="a2X-3N-2CS" firstAttribute="leading" secondItem="Pda-XO-s3W" secondAttribute="leading" id="IxF-T5-aag"/>
+                <constraint firstItem="Pda-XO-s3W" firstAttribute="trailing" secondItem="a2X-3N-2CS" secondAttribute="trailing" id="NV6-l7-ltU"/>
+                <constraint firstItem="Pda-XO-s3W" firstAttribute="bottom" secondItem="a2X-3N-2CS" secondAttribute="bottom" id="XQN-qC-U1Z"/>
+                <constraint firstItem="Pda-XO-s3W" firstAttribute="trailing" secondItem="Ahq-38-3cP" secondAttribute="trailing" id="YZ0-Ux-1XB"/>
+                <constraint firstItem="a2X-3N-2CS" firstAttribute="top" secondItem="BVs-ji-7S9" secondAttribute="bottom" id="dDB-0q-UFs"/>
+                <constraint firstItem="a2X-3N-2CS" firstAttribute="top" secondItem="Ahq-38-3cP" secondAttribute="bottom" id="jg5-1B-rL5"/>
+                <constraint firstItem="BVs-ji-7S9" firstAttribute="top" secondItem="Pda-XO-s3W" secondAttribute="top" id="ks9-Zk-u38"/>
+                <constraint firstItem="Ahq-38-3cP" firstAttribute="top" secondItem="Pda-XO-s3W" secondAttribute="top" id="m7j-T7-Dyo"/>
+                <constraint firstItem="Ahq-38-3cP" firstAttribute="leading" secondItem="Pda-XO-s3W" secondAttribute="leading" id="rQx-VK-Shf"/>
+                <constraint firstItem="BVs-ji-7S9" firstAttribute="leading" secondItem="Pda-XO-s3W" secondAttribute="leading" id="rfm-iO-dUz"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Pda-XO-s3W"/>
+        </view>
+    </objects>
+</document>

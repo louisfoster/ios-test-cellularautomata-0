@@ -15,6 +15,14 @@
 		DE0A30E0207A0D8B0047F99F /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE0A30DE207A0D8B0047F99F /* MainViewController.xib */; };
 		DE0A30EC207A293B0047F99F /* ElementaryCA.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0A30EB207A293B0047F99F /* ElementaryCA.swift */; };
 		DE1972E7207B17F000FD8B75 /* GameOfLife.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1972E6207B17F000FD8B75 /* GameOfLife.swift */; };
+		DE1972E9207B4DB900FD8B75 /* GameOfLife3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1972E8207B4DB900FD8B75 /* GameOfLife3D.swift */; };
+		DE1972EC207B4DD500FD8B75 /* ElementaryCAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1972EA207B4DD500FD8B75 /* ElementaryCAViewController.swift */; };
+		DE1972ED207B4DD500FD8B75 /* ElementaryCAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE1972EB207B4DD500FD8B75 /* ElementaryCAViewController.xib */; };
+		DE1972F0207B4DE400FD8B75 /* GameOfLifeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1972EE207B4DE400FD8B75 /* GameOfLifeViewController.swift */; };
+		DE1972F1207B4DE400FD8B75 /* GameOfLifeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE1972EF207B4DE400FD8B75 /* GameOfLifeViewController.xib */; };
+		DE1972F4207B5B1300FD8B75 /* GameOfLife3DViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1972F2207B5B1200FD8B75 /* GameOfLife3DViewController.swift */; };
+		DE1972F5207B5B1300FD8B75 /* GameOfLife3DViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE1972F3207B5B1300FD8B75 /* GameOfLife3DViewController.xib */; };
+		DE1972F8207B5B4600FD8B75 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1972F7207B5B4600FD8B75 /* Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +38,14 @@
 		DE0A30DE207A0D8B0047F99F /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		DE0A30EB207A293B0047F99F /* ElementaryCA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementaryCA.swift; sourceTree = "<group>"; };
 		DE1972E6207B17F000FD8B75 /* GameOfLife.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOfLife.swift; sourceTree = "<group>"; };
+		DE1972E8207B4DB900FD8B75 /* GameOfLife3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOfLife3D.swift; sourceTree = "<group>"; };
+		DE1972EA207B4DD500FD8B75 /* ElementaryCAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementaryCAViewController.swift; sourceTree = "<group>"; };
+		DE1972EB207B4DD500FD8B75 /* ElementaryCAViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ElementaryCAViewController.xib; sourceTree = "<group>"; };
+		DE1972EE207B4DE400FD8B75 /* GameOfLifeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOfLifeViewController.swift; sourceTree = "<group>"; };
+		DE1972EF207B4DE400FD8B75 /* GameOfLifeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameOfLifeViewController.xib; sourceTree = "<group>"; };
+		DE1972F2207B5B1200FD8B75 /* GameOfLife3DViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOfLife3DViewController.swift; sourceTree = "<group>"; };
+		DE1972F3207B5B1300FD8B75 /* GameOfLife3DViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameOfLife3DViewController.xib; sourceTree = "<group>"; };
+		DE1972F7207B5B4600FD8B75 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +98,7 @@
 		DE0A30C9207A0D490047F99F /* ios-test-cellularautomata-0 */ = {
 			isa = PBXGroup;
 			children = (
+				DE1972F6207B5B2100FD8B75 /* Helpers */,
 				DE0A30E2207A287B0047F99F /* CA */,
 				DE0A30DC207A0D7C0047F99F /* Main */,
 				DE0A30CA207A0D490047F99F /* AppDelegate.swift */,
@@ -116,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				DE0A30EB207A293B0047F99F /* ElementaryCA.swift */,
+				DE1972EA207B4DD500FD8B75 /* ElementaryCAViewController.swift */,
+				DE1972EB207B4DD500FD8B75 /* ElementaryCAViewController.xib */,
 			);
 			path = 1D;
 			sourceTree = "<group>";
@@ -124,6 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				DE1972E6207B17F000FD8B75 /* GameOfLife.swift */,
+				DE1972EE207B4DE400FD8B75 /* GameOfLifeViewController.swift */,
+				DE1972EF207B4DE400FD8B75 /* GameOfLifeViewController.xib */,
 			);
 			path = 2D;
 			sourceTree = "<group>";
@@ -131,6 +152,9 @@
 		DE0A30E5207A28920047F99F /* 3D */ = {
 			isa = PBXGroup;
 			children = (
+				DE1972E8207B4DB900FD8B75 /* GameOfLife3D.swift */,
+				DE1972F2207B5B1200FD8B75 /* GameOfLife3DViewController.swift */,
+				DE1972F3207B5B1300FD8B75 /* GameOfLife3DViewController.xib */,
 			);
 			path = 3D;
 			sourceTree = "<group>";
@@ -140,6 +164,14 @@
 			children = (
 			);
 			path = 4D;
+			sourceTree = "<group>";
+		};
+		DE1972F6207B5B2100FD8B75 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DE1972F7207B5B4600FD8B75 /* Helpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,6 +236,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE1972F5207B5B1300FD8B75 /* GameOfLife3DViewController.xib in Resources */,
+				DE1972F1207B4DE400FD8B75 /* GameOfLifeViewController.xib in Resources */,
+				DE1972ED207B4DD500FD8B75 /* ElementaryCAViewController.xib in Resources */,
 				DE0A30D5207A0D4C0047F99F /* LaunchScreen.storyboard in Resources */,
 				DE0A30E0207A0D8B0047F99F /* MainViewController.xib in Resources */,
 				DE0A30D2207A0D4C0047F99F /* Assets.xcassets in Resources */,
@@ -282,8 +317,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE1972F4207B5B1300FD8B75 /* GameOfLife3DViewController.swift in Sources */,
+				DE1972F0207B4DE400FD8B75 /* GameOfLifeViewController.swift in Sources */,
 				DE0A30CB207A0D490047F99F /* AppDelegate.swift in Sources */,
+				DE1972E9207B4DB900FD8B75 /* GameOfLife3D.swift in Sources */,
+				DE1972EC207B4DD500FD8B75 /* ElementaryCAViewController.swift in Sources */,
 				DE0A30DF207A0D8B0047F99F /* MainViewController.swift in Sources */,
+				DE1972F8207B5B4600FD8B75 /* Helpers.swift in Sources */,
 				DE1972E7207B17F000FD8B75 /* GameOfLife.swift in Sources */,
 				DE0A30EC207A293B0047F99F /* ElementaryCA.swift in Sources */,
 			);
