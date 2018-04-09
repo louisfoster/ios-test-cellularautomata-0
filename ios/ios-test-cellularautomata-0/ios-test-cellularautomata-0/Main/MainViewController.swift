@@ -10,8 +10,7 @@ import UIKit
 
 public struct PixelData {
     
-    var a: UInt8 = 255
-    var r: UInt8
+    var r: UInt8 = 255
     var g: UInt8
     var b: UInt8
 }
@@ -27,7 +26,7 @@ class MainViewController: UIViewController {
     private var elementaryCA: ElementaryCAProtocol?
     
     private let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
-    private let bitmapInfo: CGBitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedFirst.rawValue)
+    private let bitmapInfo: CGBitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue)
     
     private var image: UIImage?
     
@@ -35,6 +34,10 @@ class MainViewController: UIViewController {
     
     private var imageHeight: Int?
     private var imageWidth: Int?
+    
+    private var pixels: [PixelData] = [PixelData]()
+    private var pixel0 = PixelData(r: 0, g: 0, b: 0)
+    private var pixel1 = PixelData(r: 255, g: 255, b: 255)
     
     override func viewDidLoad() {
         
@@ -61,17 +64,21 @@ class MainViewController: UIViewController {
             
             self.elementaryCA?.updateStates(completion: { (data) in
                 
-                var pixels: [PixelData] = [PixelData]()
-                
-                for item in data {
-                    
-                    pixels.append(PixelData(a: 255, r: item * 255, g: item * 255, b: item * 255))
-                }
-                
                 if let width = self.imageWidth, let height = self.imageHeight {
                     
-                    self.image = self.imageFromARGB32Bitmap(pixels: pixels, width: width, height: height)
+                    let values = data.count != self.pixels.count ? data : Array(data[(data.count - width)...])
+                    var pix = data.count != self.pixels.count ? [PixelData]() : Array(self.pixels[width...])
+                    
+                    for item in values {
+                        
+                        pix.append(item == 0 ? self.pixel0 : self.pixel1)
+                    }
+                    
+                    self.image = self.imageFromRGB32Bitmap(pixels: pix, width: width, height: height)
+                   
                     self.imageView?.image = self.image
+                    self.pixels = pix
+                    
                     self.scroll()
                 }
             })
@@ -85,10 +92,10 @@ class MainViewController: UIViewController {
     }
     
     // From: http://blog.human-friendly.com/drawing-images-from-pixel-data-in-swift
-    public func imageFromARGB32Bitmap(pixels: [PixelData], width: Int, height: Int) -> UIImage {
+    public func imageFromRGB32Bitmap(pixels: [PixelData], width: Int, height: Int) -> UIImage {
         
         let bitsPerComponent: Int = 8
-        let bitsPerPixel: Int = 32
+        let bitsPerPixel: Int = 24
         
         assert(pixels.count == width * height)
         
@@ -108,7 +115,7 @@ class MainViewController: UIViewController {
             shouldInterpolate: true,
             intent: CGColorRenderingIntent.defaultIntent
             ) {
-        
+            
             return UIImage(cgImage: cgim)
         }
         

@@ -68,7 +68,7 @@ extension ElementaryCAProtocol {
         
         let adjusted = self.listOfCells[self.width...]
         self.listOfCells = adjusted + self.cells
-        
+
         completion(self.listOfCells)
     }
     
