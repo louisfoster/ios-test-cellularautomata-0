@@ -8,6 +8,27 @@
 
 import Foundation
 
+/*
+ 
+ TODO:
+ 
+ States: 0, 2, 4 are "dead"
+ State: 1, 3, 5 are "alive"
+ 
+ These rules could be updated as so:
+ 1. If was dead (0) and is now alive, it is a baby (1)
+ 2. If was a baby (1) and is now dead, it is an angel (2)
+ 3. If was a baby (1) and is still alive, it is a person (3)
+ 4. If was an angel (2) and is now alive, it is a person (3)
+ 5. If was an angel (2) and is still dead, it is now dead (0)
+ 6. If was a person (3) and is now dead, it is a corpse (4)
+ 7. If was a corpse (4) and is now alive, it is a zombie (5)
+ 8. If was a corpse (4) and is still dead, it is now dead (0)
+ 9. If was a zombie (5) and is still alive, it is now a corpse (4)
+ 10. If was a zombie (5) and is now dead, it is now dead (0)
+ 
+ */
+
 struct Rules {
     
     static let Rule90: [UInt8] = [0, 1, 0, 1, 1, 0, 1, 0]

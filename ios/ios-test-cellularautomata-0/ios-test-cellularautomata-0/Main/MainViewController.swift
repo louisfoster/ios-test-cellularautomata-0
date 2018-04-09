@@ -8,6 +8,13 @@
 
 import UIKit
 
+/*
+ 
+ A six state colour system could also be used (red, violet, blue, aqua, green, yellow)
+ Image could also be a half image mirrored vertically
+ 
+ */
+
 public struct PixelData {
     
     var r: UInt8 = 255
@@ -23,14 +30,19 @@ class MainViewController: UIViewController {
     @IBOutlet
     private var toggleButton: UIButton?
     
+    @IBOutlet
+    private var resetButton: UIButton!
+    
     private var elementaryCA: ElementaryCAProtocol?
+    private var gameOfLife: GameOfLifeProtocol?
     
     private let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
     private let bitmapInfo: CGBitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue)
     
     private var image: UIImage?
     
-    private var scrolling: Bool?
+    private var iterating: Bool?
+    private var tapMode: Bool?
     
     private var imageHeight: Int?
     private var imageWidth: Int?
@@ -41,27 +53,26 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        self.imageWidth = Int(self.imageView?.bounds.width ?? 0)
-        self.imageHeight = Int(self.imageView?.bounds.height ?? 0)
+        self.imageView?.layer.magnificationFilter = kCAFilterNearest
+        self.imageView?.layer.shouldRasterize = true
+        
+//        self.imageWidth = Int(self.imageView?.bounds.width ?? 0)
+//        self.imageHeight = Int(self.imageView?.bounds.height ?? 0)
 
-//        self.imageWidth = 200
-//        self.imageHeight = 200
+        self.imageWidth = 10
+        self.imageHeight = 10
         
-        if let width = self.imageWidth, let height = self.imageHeight {
+        self.iterating = false
+        self.tapMode = true
         
-            self.elementaryCA = ElementaryCA(width: width, height: height)
-        }
-        
-        self.scrolling = true
-        self.scroll()
+        self.startCA()
     }
     
-    func scroll() {
-        
-        if self.scrolling != true { return }
+    func iterate(data: [UInt8]) {
         
         DispatchQueue.main.async {
             
+            /*
             self.elementaryCA?.updateStates(completion: { (data) in
                 
                 if let width = self.imageWidth, let height = self.imageHeight {
@@ -79,16 +90,69 @@ class MainViewController: UIViewController {
                     self.imageView?.image = self.image
                     self.pixels = pix
                     
-                    self.scroll()
+                    self.iterate()
                 }
+            })
+            */
+            
+            if let width = self.imageWidth, let height = self.imageHeight {
+                
+                var pix = [PixelData]()
+                
+                for item in data {
+                    
+                    pix.append(item == 0 ? self.pixel0 : self.pixel1)
+                }
+                
+                self.image = self.imageFromRGB32Bitmap(pixels: pix, width: width, height: height)
+                
+                self.imageView?.image = self.image
+                self.pixels = pix
+                
+            }
+            
+            self.gameOfLife?.updateStates(completion: { (data) in
+                
+                if self.iterating != true { return }
+                self.iterate(data: data)
             })
         }
     }
     
-    @IBAction func toggleScrolling(_ sender: Any) {
+    // MARK: Actions
+    
+    private func startCA() {
         
-        self.scrolling = self.scrolling == true ? false : true
-        self.scroll()
+        if let width = self.imageWidth, let height = self.imageHeight {
+            
+            //            self.elementaryCA = ElementaryCA(width: width, height: height)
+            //            self.gameOfLife = GameOfLife(width: width, height: height, initial: [35, 37, 46, 48, 55, 66, 67, 68])
+            self.gameOfLife = GameOfLife(width: width, height: height)
+        }
+        
+        if let cells = self.gameOfLife?.cells {
+            
+            self.iterate(data: cells)
+        }
+    }
+    
+    @IBAction
+    private func toggleIteration(_ sender: Any) {
+        
+        if self.tapMode != true {
+        
+            self.iterating = self.iterating == true ? false : true
+        }
+        
+        if let cells = self.gameOfLife?.cells {
+            
+            self.iterate(data: cells)
+        }
+    }
+    
+    @IBAction func resetCA(_ sender: Any) {
+        
+        self.startCA()
     }
     
     // From: http://blog.human-friendly.com/drawing-images-from-pixel-data-in-swift
